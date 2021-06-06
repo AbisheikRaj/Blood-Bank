@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <div class = "content">
+        <div class = "nav__bar__button">
+            <div class = "navbar__heading">
+                <img src="../../assets/Images/blood.png">
+                <h1>Blood Bank</h1>
+            </div>
+            <div class = "logout__button">
+                <a class="button" (click) = "logout()">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class = "body">
+        <div class = "admin_main_page_body">
+            <div class = "content">
+                <h1>Blood Details List</h1>
+            </div>
+            <div class = "login__button">
+                <button class="button is-danger" routerLink = "/add_blood_details">Add Details</button>
+            </div>
+        </div>
+        
+        <div class = "blood__details__body">
+            <div *ngFor = "let a of blood_details">
+                <div class = "card__content">
+                    <div class = "card">
+                        <div class = "content"><h2>{{a.name}}</h2></div>
+                        <div>
+                            <b>Age</b>
+                            <p>{{a.age}}</p>
+                        </div>
+                        <div>
+                            <b>Gender</b>
+                            <p>{{a.gender}}</p>
+                        </div>
+                        <div>
+                            <b>Date</b>
+                            <p>{{a.date}}</p>
+                        </div>
+                        <div>
+                            <b>Address</b>
+                            <p>{{a.address}}</p>
+                        </div>
+                        <div>
+                            <b>Mobile Number</b> 
+                            <p>{{a.mobile_number}}</p>
+                        </div>
+                        <div>
+                            <b>Alternate Mobile Number</b> 
+                            <p>{{a.alternate_mobile_number}}</p>
+                        </div>
+                        <div>
+                            <b>Blood Type</b> 
+                            <p style="color: #f14668;font-weight: bold;">{{a.blood_type}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

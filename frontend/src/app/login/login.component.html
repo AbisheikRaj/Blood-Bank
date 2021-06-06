@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <body>
+        <div class = "content">
+            <div class = "nav__bar">
+                <div class = "navbar__heading">
+                    <img src="../../assets/Images/blood.png">
+                    <h1>Blood Bank</h1>
+                </div>
+                <div class = "nav__bar__button">
+                    <a class="button" href = "/admin">Admin Login</a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf = "message != undefined">
+            <div class="notification is-danger">
+                <button class="delete" (click) = "click_notification()"></button>
+                <strong>{{message}}</strong>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class = "content__div">
+                <div class = "content__heading">
+                    <h1>Login</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class = "login__form">
+            <form [formGroup]="login_form" (submit) = "login_details()">
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="email" formControlName = "email" placeholder="Enter Email">
+                        <div *ngIf = "controls.email.touched && controls.email.invalid">
+                            <div *ngIf = "controls.email.errors?.required"><b>Email is Required</b></div>
+                            <div *ngIf = "controls.email.errors?.email"><b>Email is Invalid</b></div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input class="input" type="password" formControlName = "password" placeholder="Enter Password">
+                    </div>
+                    <div *ngIf = "controls.password.touched && controls.password.invalid">
+                        <div *ngIf = "controls.password.errors?.required"><b>Password is Required</b></div>
+                    </div>
+                </div>
+
+                <div class = "login__button">
+                    <button type = "submit" class="button is-danger" [disabled] = !this.login_form.valid>Login</button>
+                </div>
+            </form>
+            
+            <div class = "register__link">
+                <a href = "/register">>> Create an Account <<</a>
+            </div>
+        </div>
+    </body>
+</html>
+

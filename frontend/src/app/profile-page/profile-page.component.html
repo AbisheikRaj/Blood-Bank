@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class = "content">
+            <div class = "navbar__heading">
+                <img src="../../assets/Images/blood.png">
+                <h1>Blood Bank</h1>
+            </div>
+        </div>
+
+        <div *ngIf = "message != undefined">
+            <div class="notification is-danger">
+                <button class="delete" (click) = "click_notification()"></button>
+                <strong>{{message}}</strong>
+            </div>
+        </div>
+        
+        <div class = "register__form">
+            <div class = "register__heading">
+                <div class = "content">
+                    <h1>Profile</h1>
+                </div>
+            </div>
+            <form [formGroup]="profile_form" (submit) = "submit_profile_form()">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">
+                    <input class="input" type="text" formControlName = "name" placeholder="Enter Name" [(ngModel)] = "profile_name">
+                    <div *ngIf = "controls.name.touched && controls.name.invalid">
+                        <div *ngIf = "controls.name.errors?.required"><b>Name is Required</b></div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="email" formControlName = "email" placeholder="Enter Email" [(ngModel)] = "profile_email" [readonly] = "true">
+                        <div *ngIf = "controls.email.touched && controls.email.invalid">
+                            <div *ngIf = "controls.email.errors?.required">Email is Required</div>
+                            <div *ngIf = "controls.email.errors?.email"><b>Email is Invalid</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                    <input class="input" type="password" formControlName = "password" placeholder="Enter Password" [(ngModel)] = "profile_password">
+                    <div *ngIf = "controls.password.touched && controls.password.invalid">
+                        <div *ngIf = "controls.password.errors?.required"><b>Password is Required</b></div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <label class="label">Gender</label>
+                    <label class="radio">
+                      <input type="radio" formControlName = "gender" value = "male" name="gender" [(ngModel)] = "profile_gender">
+                      Male
+                    </label>
+                    <label class="radio">
+                      <input type="radio" formControlName = "gender" value = "female" name="gender" [(ngModel)] = "profile_gender">
+                      Female
+                    </label>
+                    <div *ngIf = "controls.gender.touched && controls.gender.invalid">
+                        <div *ngIf = "controls.gender.errors?.required"><b>Gender is Required</b></div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Address (With Pincode) </label>
+                    <div class="control">
+                      <textarea class="textarea" formControlName = "address" placeholder="Enter Address" [(ngModel)] = "profile_address"></textarea>
+                      <div *ngIf = "controls.address.touched && controls.address.invalid">
+                        <div *ngIf = "controls.address.errors?.required"><b>Address is Required</b></div>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label class="label">Mobile Number</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName = "mobile_number" placeholder="Enter Mobile Number" [(ngModel)] = "profile_mobile_number">
+                        <div *ngIf = "controls.mobile_number.touched && controls.mobile_number.invalid">
+                            <div *ngIf = "controls.mobile_number.errors?.required"><b>Mobile Number is Required</b></div>
+                            <div *ngIf = "controls.mobile_number.errors?.pattern"><b>Enter the Valid Mobile Number</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "register__button">
+                    <button type = "submit" id = "submit" class="button is-danger" [disabled] = "!this.profile_form.valid">Update</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

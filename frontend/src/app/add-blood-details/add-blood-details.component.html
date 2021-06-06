@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Details</title>
+</head>
+<body>
+    <div class = "content">
+        <div class = "navbar__heading">
+            <img src="../../assets/Images/blood.png">
+            <h1>Blood Bank</h1>
+        </div>
+    </div>
+    <!-- <div class = "back__navigation"><a href = "/admin_page">< Back</a></div> -->
+
+    <div *ngIf = "message != undefined">
+        <div class="notification is-danger">
+            <button class="delete" (click) = "click_notification()"></button>
+            <strong>{{message}}</strong>
+        </div>
+    </div>
+    
+    <div class = "blood__details__section">
+        <div class = "blood_details_heading">
+            <div class = "content">
+                <h1>Add Blood Details</h1>
+            </div>
+        </div>
+        
+        <div class = "blood__details__form">
+            <form [formGroup]="blood_details_form" (submit) = "blood_details()">
+                <div class="field">
+                    <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" formControlName = "name" placeholder="Enter Name">
+                            <div *ngIf = "controls.name.touched && controls.name.invalid">
+                                <div *ngIf = "controls.name.errors?.required"><b>Name is Required</b></div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Age</label>
+                        <div class="control">
+                            <input class="input" type="text" formControlName = "age" placeholder="Enter Age">
+                            <div *ngIf = "controls.age.touched && controls.age.invalid">
+                                <div *ngIf = "controls.age.errors?.required"><b>Age is Required</b></div>
+                                <div *ngIf = "controls.age.errors?.pattern"><b>Enter a Valid Age</b></div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Blood Group</label>
+                        <div class="control">
+                            <input class="input" type="text" formControlName = "blood_group" placeholder="Enter Blood Group">
+                            <div *ngIf = "controls.blood_group.touched && controls.blood_group.invalid">
+                                <div *ngIf = "controls.blood_group.errors?.required"><b>Blood Group is Required</b></div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <label class="label">Gender</label>
+                        <label class="radio">
+                            <input type="radio" formControlName = "gender" value = "male" name="gender">
+                            Male
+                        </label>
+                    <label class="radio">
+                        <input type="radio" formControlName = "gender" value = "female" name="gender">
+                        Female
+                    </label>
+                    <div *ngIf = "controls.gender.touched && controls.gender.invalid">
+                        <div *ngIf = "controls.gender.errors?.required"><b>Gender is Required</b></div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Address (With Pincode) </label>
+                        <div class="control">
+                        <textarea class="textarea" formControlName = "address" placeholder="Enter Address"></textarea>
+                        <div *ngIf = "controls.address.touched && controls.address.invalid">
+                            <div *ngIf = "controls.address.errors?.required"><b>Address is Required</b></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label class="label">Mobile Number</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName = "mobile_number" placeholder="Enter Mobile Number">
+                        <div *ngIf = "controls.mobile_number.touched && controls.mobile_number.invalid">
+                            <div *ngIf = "controls.mobile_number.errors?.required"><b>Mobile Number is Required</b></div>
+                            <div *ngIf = "controls.mobile_number.errors?.pattern"><b>Enter a Valid Mobile Number</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Alternate Mobile Number</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName = "alternate_mobile_number" placeholder="Enter Alternate Mobile Number">
+                        <div *ngIf = "controls.alternate_mobile_number.touched && controls.alternate_mobile_number.invalid">
+                            <div *ngIf = "controls.alternate_mobile_number.errors?.required"><b>Alternate Mobile Number is Required</b></div>
+                            <div *ngIf = "controls.alternate_mobile_number.errors?.pattern"><b>Enter a Valid Alternate Mobile Number</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "blood__details__button">
+                    <button type = "submit" class="button is-danger" [disabled] = !this.blood_details_form.valid>Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

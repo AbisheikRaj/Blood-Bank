@@ -1,0 +1,58 @@
+
+.register__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.register__form > form {
+    width: 375px;
+}
+
+.register__form > form > .field > input {
+    margin-bottom: 10px;
+}
+
+.control {
+    margin-bottom: 15px;
+}
+
+.navbar__heading {
+    padding: 6px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.navbar__heading > img {
+    width: 110px;
+    height: 94px;
+}
+
+.register__button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.register__button > button {
+    font-weight: bold;
+}
+
+.register__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 375px;
+    border-bottom: 5px solid #f14668;
+    margin-bottom: 30px;
+}
+
+.notification_message {
+    height: 20px;
+}
+
+b {
+    color: #f14668;
+}
